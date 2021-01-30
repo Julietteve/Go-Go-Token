@@ -1,10 +1,12 @@
 import React from 'react';
+import { Container } from "./styles";
 
 const FilterBar = () => {
     return (
-        <div>
+        <Container>
             FilterBar
-        </div>
+        </Container>
+       
     );
 };
 
