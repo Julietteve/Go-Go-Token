@@ -3,7 +3,7 @@ import {Container} from './styles'
 
 const UserBar = () => {
     return (
-        <Container>
+        <Container >
             User Bar
         </Container>
     );
