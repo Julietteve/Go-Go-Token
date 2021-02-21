@@ -1,25 +1,40 @@
 import React, {useEffect, useState} from 'react';
 import { CardProduct } from "../index";
-import {CardBox} from './styles'
+import {CardBox} from './styles';
+import {useFetch} from '../../utils';
 
 const CardContainer = () => {
-    const [products, setProducts]= useState([])
+   
+   
+    const [data, setData] = useState([])
+
     useEffect(()=>{
-        fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(json=>setProducts(json))
-            .then(res=>console.log(res))
-    })
+        fetch('https://coding-challenge-api.aerolab.co/products',{
+        headers: {
+            method: 'GET',
+            "Content-Type": "application/json",
+            Accept:"application/json",
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWRkOWU5OTQ0NGZlNDAwNmRhOTkyNGQiLCJpYXQiOjE1OTE1ODIzNjF9.-f40dyUIGFsBSB_PTeBGdSLI58I21-QBJNi9wkODcKk",
+        }})
+        .then(res=> res.json())
+        .then(res=>setData(res))
+        .catch(err=>console.log(err))
+
+        console.log(data)
+    },[])
+
+ 
 
     return (
         <CardBox>
-            {products.map(product =>(
-                <CardProduct
-                category={product.category}
-                imageProductURL={product.image}
-                productName={product.title}
-                />
-            ))}
+           {data.map(d=>(
+               <CardProduct
+               imageProductURL={d.img.url}
+               category={d.category}
+               productName={d.name}
+               cost={d.cost}
+               />
+           ))}
         </CardBox>
     );
 };

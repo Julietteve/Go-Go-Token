@@ -1,12 +1,14 @@
 import React from 'react';
+import {Container, ProductImage, Category, ProductName} from './styles';
 
-const CardProduct = ({imageProductURL, category, productName}) => {
+const CardProduct = ({imageProductURL, category, productName,cost}) => {
     return (
-        <div>
-            <img style={{width:'200px'}} src={imageProductURL} alt={productName}></img>
-            <p>{category}</p>
-           <h2>{productName}</h2>
-        </div>
+        <Container>
+            <ProductImage style={{width:'200px'}} src={imageProductURL} alt={productName}/>
+           <h2>{cost}</h2>
+            <Category>{category}</Category>
+           <ProductName>{productName}</ProductName>
+        </Container>
     );
 };
 
