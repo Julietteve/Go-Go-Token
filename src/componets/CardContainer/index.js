@@ -19,12 +19,8 @@ const CardContainer = () => {
         .then(res=> res.json())
         .then(res=>setData(res))
         .catch(err=>console.log(err))
-
-        console.log(data)
     },[])
-
- 
-
+    
     return (
         <CardBox>
            {data.map(d=>(
