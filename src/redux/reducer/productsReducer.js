@@ -3,7 +3,7 @@ import {
     FETCH_PRODUCTS_FAILURE,
     FETCH_PRODUCTS_SUCCESS,
 } 
-from '../actions/productsActions';
+from '../actions';
 
 const initialState = {
     hasError: false,

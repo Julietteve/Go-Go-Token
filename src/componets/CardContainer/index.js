@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { CardProduct } from "../index";
 import {CardBox} from './styles';
-import {useFetch} from '../../utils';
+
 
 const CardContainer = () => {
    

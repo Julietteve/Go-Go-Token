@@ -2,7 +2,7 @@ import {
     FETCH_HISTORY_START,
     FETCH_HISTORY_SUCCESS,
     FETCH_HISTORY_FAILURE
-} from '../actions/historyActions';
+} from '../actions';
 
 const initialState = {
     isLoading: false,

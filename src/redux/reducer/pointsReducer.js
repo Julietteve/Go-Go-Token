@@ -4,7 +4,7 @@ import {
     ADD_POINTS_SUCCESS,
     ADD_POINTS_RESTART_SUCCESS,
     ADD_POINTS_RESTART_FAILURE,
-} from '../actions/pointsActions';
+} from '../actions';
 
 const inicialState = {
     isLoading: false,

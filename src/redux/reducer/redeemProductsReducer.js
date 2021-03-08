@@ -4,7 +4,7 @@ import {
     REDEEM_PRODUCTS_FAILURE,
     REDEEM_PRODUCTS_RESTART_SUCCESS
 
-} from '../actions/redeemProductsActions';
+} from '../actions';
 
 const initialState = {
     isLoading: false,

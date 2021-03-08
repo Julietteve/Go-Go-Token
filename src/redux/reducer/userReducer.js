@@ -2,7 +2,7 @@ import {
     GET_USER_FAILURE,
     GET_USER_START,
     GET_USER_SUCCESS,
-} from '../actions/userActions';
+} from '../actions';
 
 const initialState = {
     isLoading: false,
