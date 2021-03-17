@@ -30,7 +30,7 @@ export const productsReducer = (state=initialState, action) => {
             return{
                 ...state,
                 hasError:action.payload.error,
-                articles: []
+                products: []
             }
         default:
             return state

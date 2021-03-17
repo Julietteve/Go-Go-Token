@@ -1,9 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux';
 import {getUser} from '../../utils/services'
 import {Container} from './styles'
 
+
 const UserBar = () => {
+
 
     const dispatch = useDispatch()
     
@@ -11,14 +14,25 @@ const UserBar = () => {
         dispatch(getUser())
     },[dispatch])
 
-    const {userData} = useSelector((state)=> state.userReducer) //userReducer es el nombre del reducer!!!
+    const {userData} = useSelector((state)=> state.userReducer)
     const {name,points} = userData
-    
+
 
     return (
         <Container >
-           <p>{name}</p>
-           <p>{points}</p>
+            <Link to='/'>
+            <h3>POINTFEVER</h3>
+            </Link>
+           <Link to= '/history'>
+           <h3>History</h3>
+           </Link>
+           <div>{name}</div>
+           <div>{points}</div>
+           <div>
+      <button type="button">
+        Add Points
+      </button>
+    </div>
         </Container>
     );
 };

@@ -12,7 +12,6 @@ export function getUser () {
         try{
             const {data: userData} = await axios.get(`${END_POINT_URL}/user/me`,{ headers: {...headerReq}});
             dispatch(getUserSuccess(userData))
-            console.log(userData)
         }
         catch (error){
             dispatch(getUserFailure(error))
@@ -22,7 +21,7 @@ export function getUser () {
 
 export function getProducts () {
     return async (dispatch) => {
-        dispatch(fetchProductsStart)
+        dispatch(fetchProductsStart())
         try{
             const {data: products} = await axios.get(`${END_POINT_URL}/products`,{ headers: {... headerReq}})
             dispatch(fetchProductsSuccess(products))
@@ -37,11 +36,12 @@ export function getHistory (){
     return async(dispatch) => {
         dispatch(fetchHistoryStart());
         try{
-            const { data: history} = await axios.get(`${END_POINT_URL}/history`, { headers: {...headerReq}})
+            const { data: history} = await axios.get(`${END_POINT_URL}/user/history`, { headers: {...headerReq}})
             dispatch(fetchHistorySuccess(history))
         }
         catch(error){
             dispatch(fetchHistoryFailure(error))
+            console.log(error)
         }
     }
 }
