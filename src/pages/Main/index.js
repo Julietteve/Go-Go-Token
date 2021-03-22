@@ -10,7 +10,7 @@ const Main = () => {
     useEffect(()=>{
         dispatch(getProducts())
     }, [dispatch])
-
+    
     const {products, isLoading} = useSelector((state)=>state.productsReducer)
 
     return (

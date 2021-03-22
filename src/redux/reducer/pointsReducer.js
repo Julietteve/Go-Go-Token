@@ -18,7 +18,7 @@ export const pointsReducer = (state=inicialState, action) =>{
             return{
             ...state,
             isLoading:true,
-            hasError:false
+            hasError:false,
         }
         case ADD_POINTS_SUCCESS:
             return{
@@ -36,13 +36,15 @@ export const pointsReducer = (state=inicialState, action) =>{
             return{
             ...state,
             isLoading:false,
-            success:true,
+            hasError: false,
+            success:false,
         }
         case ADD_POINTS_RESTART_FAILURE:
             return {
             ...state,
             isLoading:false,
-            hasError:true
+            hasError:false,
+            success:false
             }
         default:
             return state;  

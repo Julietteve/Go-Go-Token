@@ -37,7 +37,7 @@ export const redeemProductsReducer = (state=initialState, action) =>{
                 ...state,
                 isLoading:false,
                 hasError:false,
-                success:true,
+                success:false,
             }
         default:
             return state;

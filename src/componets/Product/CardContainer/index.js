@@ -11,6 +11,8 @@ const CardContainer = ({products}) => {
                category={product.category}
                productName={product.name}
                cost={product.cost}
+               key={product._id}
+               id={product._id}
                />
            ))}
         </CardBox>

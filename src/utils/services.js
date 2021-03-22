@@ -12,6 +12,7 @@ export function getUser () {
         try{
             const {data: userData} = await axios.get(`${END_POINT_URL}/user/me`,{ headers: {...headerReq}});
             dispatch(getUserSuccess(userData))
+            console.log(userData)
         }
         catch (error){
             dispatch(getUserFailure(error))
@@ -23,7 +24,7 @@ export function getProducts () {
     return async (dispatch) => {
         dispatch(fetchProductsStart())
         try{
-            const {data: products} = await axios.get(`${END_POINT_URL}/products`,{ headers: {... headerReq}})
+            const {data: products} = await axios.get(`${END_POINT_URL}/products`,{ headers: {...headerReq}})
             dispatch(fetchProductsSuccess(products))
         }
         catch(error){
