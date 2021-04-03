@@ -2,7 +2,7 @@ import React from 'react';
 import {CardBox} from './styles';
 import CardProduct from "../CardProduct"
 
-const CardContainer = ({products}) => {
+const CardContainer = ({products, width}) => {
     return (
         <CardBox>
            {products.map(product=>(
@@ -13,6 +13,7 @@ const CardContainer = ({products}) => {
                cost={product.cost}
                key={product._id}
                id={product._id}
+               width={width}
                />
            ))}
         </CardBox>

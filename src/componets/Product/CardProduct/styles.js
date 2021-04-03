@@ -5,6 +5,7 @@ export const Container = styled.div`
 `;
 
 export const ProductImage = styled.img`
+    width: ${(props)=>props.width};
     
 `;
 
