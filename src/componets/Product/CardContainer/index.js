@@ -1,9 +1,20 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {resetFilter} from '../../../redux/actions/filterActions'
 import {CardBox} from './styles';
-import CardProduct from "../CardProduct"
+import CardProduct from "../CardProduct";
 
-const CardContainer = ({products, width}) => {
+const CardContainer = ({products, width, deleteFilter}) => {
+
+    const dispatch = useDispatch() 
+
+    const io = () =>{
+        dispatch(resetFilter())
+    }
+
     return (
+        <>
+        {deleteFilter ? <h3 onClick={()=>io()}>Restart filters X </h3> : null}
         <CardBox>
            {products.map(product=>(
                <CardProduct
@@ -17,6 +28,7 @@ const CardContainer = ({products, width}) => {
                />
            ))}
         </CardBox>
+        </>
     );
 };
 

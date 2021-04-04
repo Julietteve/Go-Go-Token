@@ -3,6 +3,7 @@ import {pointsReducer} from './pointsReducer';
 import {productsReducer} from './productsReducer';
 import {redeemProductsReducer} from './redeemProductsReducer';
 import {userReducer} from './userReducer';
+import {filterReducer} from './filterReducer'
 import {combineReducers} from 'redux';
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
     pointsReducer,
     productsReducer,
     redeemProductsReducer,
-    userReducer
+    userReducer,
+    filterReducer
 })

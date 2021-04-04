@@ -1,25 +1,32 @@
 import React, {useState, useEffect} from 'react';
 import { Container,Children, Filter, GridIconContainer, FilterContainer} from "./styles";
+import {useSelector, useDispatch} from 'react-redux';
+import { applyFilter,setCategory } from "../../redux/actions/filterActions";
 import { BiFilterAlt } from 'react-icons/bi';
 import {BsFillGrid3X3GapFill, BsFillGridFill} from 'react-icons/bs';
 import { IoIosSquare} from 'react-icons/io'
 import { Collapse } from '..';
-import {useDispatch,useSelector}  from 'react-redux';
-import { getProducts } from "../../utils/services";
+
+const categories = [ "Laptops", "Cameras", "Smart Home", "Audio", "Monitors & TV", "PC Accessories", "Gaming", "Tablets & E-readers","Phones","Drones","Phone Accessories","PC Accesories"]
 
 const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig}) => {
 
     const [filterIsOpen, setOpenFilter] = useState(false)
-    const [categories, setCategories] = useState([])
-    const {products} = useSelector((state)=>state.productsReducer)
-    const productsByCategory = new Set(products.map(i=>i.category))
-    
-    const dispatch = useDispatch()
+    const [activeFilter,setActiveFilter] = useState('All')
+    const [category, setSelectedCategory] = useState('')
 
-    useEffect(()=>{
-        dispatch(getProducts())
-        setCategories(productsByCategory)
-    }, [dispatch])
+    const handleCategory = (e) => {
+        const value = e.target.value
+        setSelectedCategory(value)
+        setOpenFilter(false)
+    }
+
+   const dispatch = useDispatch()
+
+   useEffect (()=>{
+       dispatch(applyFilter(activeFilter))
+       dispatch(setCategory(category))
+   }, [dispatch, activeFilter,category])
     
     const toggle = () => {
         setOpenFilter(!filterIsOpen)
@@ -29,8 +36,8 @@ const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig}) => {
     return (
         <Filter>
         <Container>
-                <p>Lowest Price</p>
-                <p>Highest price</p>
+                <p onClick={()=>setActiveFilter('lowest-price')} >Lowest Price</p>
+                <p onClick={()=>setActiveFilter('highest-price')} >Highest price</p>
                 <GridIconContainer>
                     <BsFillGrid3X3GapFill onClick={handleWidthSmall}/>
                     <BsFillGridFill  onClick={handleWidthMedium} />
@@ -44,18 +51,11 @@ const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig}) => {
             <Collapse isOpen={filterIsOpen}>
                 <Children>
                     <div>
-                    <h1>Categories</h1>
-                   {[...categories].map(i=><li>{i}</li>)}
+                        <h1>Categories</h1>
+                        {categories.map(category => (
+                            <button onClick={handleCategory} value={category}>{category}</button>
+                        ))}
                     </div>
-                    <div>
-                        <h1>Colors</h1>
-                        <p>Brown</p>
-                        <p>Blue</p>
-                        <p>Black</p>
-                        <p>Green</p>
-                    </div>
-
-
                 </Children>
             </Collapse>
         </Filter>
