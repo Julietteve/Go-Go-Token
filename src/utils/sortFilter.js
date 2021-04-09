@@ -1,6 +1,12 @@
-export function sortProductsByPrice(products= [], filter) {
+export function sortProducts(products= [], filter) {
     if(filter==='All'){
         return [...products]
+    }
+    else if (filter === 'latest'){
+        return [...products].sort((a, b) => new Date(b.createDate) - new Date(a.createDate))
+    }
+    else if (filter === 'oldest'){
+        return [...products].sort((a, b) => new Date(a.createDate) - new Date(b.createDate))
     }
     else if(filter === 'highest-price'){
         return [...products].sort((a,b) => b.cost - a.cost)
