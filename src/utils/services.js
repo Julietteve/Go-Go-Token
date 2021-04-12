@@ -25,6 +25,7 @@ export function getProducts () {
         dispatch(fetchProductsStart())
         try{
             const {data: products} = await axios.get(`${END_POINT_URL}/products`,{ headers: {...headerReq}})
+           console.log(products)
             dispatch(fetchProductsSuccess(products))
         }
         catch(error){

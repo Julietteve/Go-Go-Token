@@ -1,12 +1,9 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
 import {CardBox} from './styles';
 import Pagination from "react-js-pagination";
 import CardProduct from "../CardProduct";
 
-const CardContainer = ({products, width,  activePage, onChange, totalItemsCount}) => {
-
-    const dispatch = useDispatch() 
+const CardContainer = ({products, width,  activePage, onChange, totalItemsCount, categoryNull}) => {
 
     return (
         <>
@@ -23,6 +20,7 @@ const CardContainer = ({products, width,  activePage, onChange, totalItemsCount}
                />
            ))}
         </CardBox>
+        {categoryNull && 
         <Pagination
             activePage={activePage}
             itemsCountPerPage={10}
@@ -30,6 +28,7 @@ const CardContainer = ({products, width,  activePage, onChange, totalItemsCount}
             pageRangeDisplayed={10}
             onChange={onChange}
           />
+        }
         </>
     );
 };

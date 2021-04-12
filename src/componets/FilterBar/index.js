@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Container,Children, Filter, GridIconContainer, FilterContainer} from "./styles";
 import {useSelector, useDispatch} from 'react-redux';
-import { applyFilter,setCategory } from "../../redux/actions/filterActions";
+import { applyFilter,setCategory, resetFilter } from "../../redux/actions/filterActions";
 import { BiFilterAlt } from 'react-icons/bi';
 import {BsFillGrid3X3GapFill, BsFillGridFill} from 'react-icons/bs';
 import { IoIosSquare} from 'react-icons/io'
@@ -9,7 +9,7 @@ import { Collapse } from '..';
 
 const categories = [ "Laptops", "Cameras", "Smart Home", "Audio", "Monitors & TV", "PC Accessories", "Gaming", "Tablets & E-readers","Phones","Drones","Phone Accessories","PC Accesories"]
 
-const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig}) => {
+const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig,activeCategory, emptyCategory}) => {
 
     const [filterIsOpen, setOpenFilter] = useState(false)
     const [activeFilter,setActiveFilter] = useState('All')
@@ -17,6 +17,7 @@ const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig}) => {
 
     const handleCategory = (e) => {
         const value = e.target.value
+        console.log(value)
         setSelectedCategory(value)
         setOpenFilter(false)
     }
@@ -30,6 +31,11 @@ const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig}) => {
     
     const toggle = () => {
         setOpenFilter(!filterIsOpen)
+    }
+
+    const handleCategoryReset = () => {
+        dispatch(resetFilter())
+        setSelectedCategory('')
     }
     
 
@@ -58,6 +64,11 @@ const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig}) => {
                     </div>
                 </Children>
             </Collapse>
+            {emptyCategory &&
+        <div>
+            <p>{activeCategory}</p>
+            <button onClick={handleCategoryReset}>X</button>
+        </div>}
         </Filter>
        
     );

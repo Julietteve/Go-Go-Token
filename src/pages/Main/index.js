@@ -13,31 +13,30 @@ const Main = () => {
     useEffect(()=>{
         dispatch(getProducts())
     }, [dispatch])
-    
-    const {products, isLoading} = useSelector((state)=>state.productsReducer)
-    const {activeFilter, category} =useSelector(state=>state.filterReducer)
 
+    
+    const {products, isLoading} = useSelector(state=>state.productsReducer)
+    const {activeFilter, category, } =useSelector(state=>state.filterReducer)
+    
     const filteredProducts = sortProducts(products,activeFilter)
-    const filteredProductsByCategory = sortProductsByCategory(products, category)
+    const articlesPerPage = 10;
+    const indexOfLastArticle  = activePage * articlesPerPage;
+    const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+    const currentArticles     = filteredProducts.slice( indexOfFirstArticle, indexOfLastArticle );
+    const filteredProductsByCategory = sortProductsByCategory(filteredProducts, category)
     const filteredProductsByCategoryandPrice = sortProducts(filteredProductsByCategory,activeFilter)
 
-    const handleFilters = () => filteredProductsByCategory.length===0 ? filteredProducts : filteredProductsByCategoryandPrice
-    const totalProducts = handleFilters()
+    const handleFilters = () => filteredProductsByCategory.length===0 ? currentArticles : filteredProductsByCategoryandPrice
 
     const handlePageChange = ( pageNumber ) => {
         setCurrentPage( pageNumber )
      };
-
+    
     const width = {
         small: '200',
         medium : '300',
         big : '350'
     }
-
-    const articlesPerPage = 10;
-    const indexOfLastArticle  = activePage * articlesPerPage;
-    const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-    const currentArticles     = filteredProducts.slice( indexOfFirstArticle, indexOfLastArticle );
 
     return (
         <div>
@@ -47,14 +46,17 @@ const Main = () => {
                 handleWidthSmall={()=>setWidth(width.small)} 
                 handleWidthMedium={()=>setWidth(width.medium)} 
                 handleWidthBig={()=>setWidth(width.big)} 
+                emptyCategory={filteredProductsByCategory.length>0 ? true: false}
+                activeCategory={category}
             />
             {isLoading? <p>isLoading...</p> : 
                 <CardContainer 
                 width={widthImg} 
-                products={totalProducts}
+                products={handleFilters()}
                 activePage={ activePage }
-                totalItemsCount={ filteredProducts.length }
+                totalItemsCount={ products.length }
                 onChange={ handlePageChange }
+                categoryNull= {filteredProductsByCategory.length>0 ? false: true}
             />
             }
         </div>

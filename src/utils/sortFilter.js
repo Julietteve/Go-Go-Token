@@ -21,10 +21,6 @@ export function sortProducts(products= [], filter) {
 
 export function sortProductsByCategory (products = [],value) {
     return products.filter ((product)=>{
-        if(value===undefined){
-            return [...products];
-        }else{
             return product.category === value
-        }
     })
 }
