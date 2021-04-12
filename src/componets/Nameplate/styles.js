@@ -4,6 +4,10 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    background-color: #E5E6
+    height: 300px;
+    background-color: #E5E6;
+`;
+
+export const LeftContainer = styled.div`
+    
 `;

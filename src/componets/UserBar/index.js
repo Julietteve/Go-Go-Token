@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom'
+import {AiOutlineHistory} from 'react-icons/ai'
 import {useDispatch, useSelector} from 'react-redux';
 import {addPointsResetSuccess} from '../../redux/actions/pointsActions'
 import {getUser, postPoints} from '../../utils/services'
-import {Container} from './styles'
+import {Container, LeftContainer, RightContainer, DataUser, NavIcon, AddIcon} from './styles'
 import {Modal} from '..'
 
 
@@ -22,14 +22,9 @@ const UserBar = () => {
 
     const [isOpen, setOpenModal] = useState(false)
 
+    const handleAddPoints = () => dispatch(postPoints(amountPoints))
 
-    const handleAddPoints = () =>{
-        dispatch(postPoints(amountPoints))
-    }
-
-    const handleOpenModal = () =>{
-        setOpenModal(true)
-    }
+    const handleOpenModal = () => setOpenModal(true)
 
     const handleCloseModal = () => {
         dispatch(addPointsResetSuccess())
@@ -44,21 +39,21 @@ const UserBar = () => {
         }
     }
 
-
-
     return (
         <Container >
-            <Link to='/'>
-            <h3>POINTFEVER</h3>
-            </Link>
-           <Link to= '/history'>
-           <h3>History</h3>
-           </Link>
-           <div>{name}</div>
-           <div>{points}</div>
-           <div>
+            <LeftContainer>
+                    <NavIcon to='/'>POINTFEVER</NavIcon>
+            </LeftContainer>
+            <RightContainer>
+                <DataUser>{name}</DataUser>
+                <DataUser>{points}</DataUser>
+                <NavIcon title="Go to History" to= '/history'>
+                        <AiOutlineHistory/>
+                </NavIcon>
+                <AddIcon title="Add points" onClick= {handleOpenModal}/>
+            </RightContainer>
+            <div>
            <Modal id='modal' show={isOpen} handleClose={handleCloseModal}>
-
                {!isLoading && !hasError && !success &&
                <div>
                    <h2>Add Points</h2>
@@ -70,9 +65,7 @@ const UserBar = () => {
             {isLoading && <h1>loading</h1>}
             {success && <h1>You added {amountPoints} points !</h1>}
         </Modal>
-      <button type="button" onClick= {handleOpenModal}>
-        Add Points
-      </button>
+    
     </div>
         </Container>
     );

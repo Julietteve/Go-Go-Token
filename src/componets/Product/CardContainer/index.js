@@ -1,5 +1,5 @@
 import React from 'react';
-import {CardBox} from './styles';
+import {CardBox, PaginationContainer} from './styles';
 import Pagination from "react-js-pagination";
 import CardProduct from "../CardProduct";
 
@@ -21,13 +21,15 @@ const CardContainer = ({products, width,  activePage, onChange, totalItemsCount,
            ))}
         </CardBox>
         {categoryNull && 
-        <Pagination
-            activePage={activePage}
-            itemsCountPerPage={10}
-            totalItemsCount={totalItemsCount}
-            pageRangeDisplayed={10}
-            onChange={onChange}
-          />
+        <PaginationContainer>
+            <Pagination
+                activePage={activePage}
+                itemsCountPerPage={10}
+                totalItemsCount={totalItemsCount}
+                pageRangeDisplayed={10}
+                onChange={onChange}
+              />
+        </PaginationContainer>
         }
         </>
     );

@@ -4,7 +4,7 @@ import {Container} from './styles'
 const Nameplate = () => {
     return (
         <Container>
-            GO GO Token
+            All you can redeem
         </Container>
         
     );
