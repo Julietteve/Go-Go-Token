@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Container,Children, Filter, GridIconContainer, FilterContainer} from "./styles";
+import { Container,Children, Filter, GridIconContainer, FilterContainer, FilterPrice, PriceButton, Size} from "./styles";
 import {useSelector, useDispatch} from 'react-redux';
 import { applyFilter,setCategory, resetFilter } from "../../redux/actions/filterActions";
 import { BiFilterAlt } from 'react-icons/bi';
@@ -42,12 +42,20 @@ const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig,activeCa
     return (
         <Filter>
         <Container>
-                <p onClick={()=>setActiveFilter('lowest-price')} >Lowest Price</p>
-                <p onClick={()=>setActiveFilter('highest-price')} >Highest price</p>
+            <FilterPrice>
+                <PriceButton onClick={()=>setActiveFilter('lowest-price')} >Lowest Price</PriceButton>
+                <PriceButton onClick={()=>setActiveFilter('highest-price')} >Highest price</PriceButton>
+            </FilterPrice>
                 <GridIconContainer>
-                    <BsFillGrid3X3GapFill onClick={handleWidthSmall}/>
-                    <BsFillGridFill  onClick={handleWidthMedium} />
-                    <IoIosSquare  onClick={handleWidthBig}/>
+                    <Size>
+                        <BsFillGrid3X3GapFill onClick={handleWidthSmall}/>
+                    </Size>
+                    <Size>
+                        <BsFillGridFill  onClick={handleWidthMedium} />
+                    </Size>
+                    <Size>
+                        <IoIosSquare  onClick={handleWidthBig}/>
+                    </Size>
                 </GridIconContainer>
             <FilterContainer onClick={toggle}>
                 <p>FILTER</p>

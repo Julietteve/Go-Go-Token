@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {AiOutlineHistory} from 'react-icons/ai'
+import {AiOutlineHistory} from 'react-icons/ai';
 import {useDispatch, useSelector} from 'react-redux';
 import {addPointsResetSuccess} from '../../redux/actions/pointsActions'
 import {getUser, postPoints} from '../../utils/services'
-import {Container, LeftContainer, RightContainer, DataUser, NavIcon, AddIcon} from './styles'
+import {Container, LeftContainer, RightContainer, DataUser, NavIcon, AddIcon,Title, PointIcon} from './styles'
 import {Modal} from '..'
 
 
@@ -42,7 +42,7 @@ const UserBar = () => {
     return (
         <Container >
             <LeftContainer>
-                    <NavIcon to='/'>POINTFEVER</NavIcon>
+                    <Title to='/'>POINTFEVER</Title>
             </LeftContainer>
             <RightContainer>
                 <DataUser>{name}</DataUser>

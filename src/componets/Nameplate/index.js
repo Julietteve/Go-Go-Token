@@ -1,11 +1,14 @@
 import React from 'react';
-import {Container} from './styles'
+import {Container, NameplateTitle, Banner, Box} from './styles'
 
 const Nameplate = () => {
     return (
-        <Container>
-            All you can redeem
-        </Container>
+        <Box>
+            <Container>
+                <NameplateTitle>All you can redeem</NameplateTitle>
+                <Banner src='images/watches.png'/>
+            </Container>
+        </Box>
         
     );
 };

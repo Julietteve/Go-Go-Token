@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import {getProducts} from '../../utils/services'
-import {CardContainer,FilterBar,Nameplate,UserBar} from '../../componets';
+import {CardContainer,FilterBar,Nameplate,UserBar,Footer} from '../../componets';
 import {sortProductsByCategory, sortProducts} from '../../utils/sortFilter'
 
 const Main = () => {
@@ -59,6 +59,7 @@ const Main = () => {
                 categoryNull= {filteredProductsByCategory.length>0 ? false: true}
             />
             }
+            <Footer/>
         </div>
     );
 };
