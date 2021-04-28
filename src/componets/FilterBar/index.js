@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import { Container,Children, Filter, GridIconContainer, FilterContainer, FilterPrice, PriceButton, Size} from "./styles";
-import {useSelector, useDispatch} from 'react-redux';
+import { Container,Children, Cat, Child, EmptyCat, Exit, Filter, GridIconContainer, FilterContainer, FilterPrice, PriceButton, Size} from "./styles";
+import { useDispatch} from 'react-redux';
 import { applyFilter,setCategory, resetFilter } from "../../redux/actions/filterActions";
 import { BiFilterAlt } from 'react-icons/bi';
-import {BsFillGrid3X3GapFill, BsFillGridFill} from 'react-icons/bs';
+import { BsFillGrid3X3GapFill, BsFillGridFill} from 'react-icons/bs';
 import { IoIosSquare} from 'react-icons/io'
 import { Collapse } from '..';
 
@@ -67,16 +67,16 @@ const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig,activeCa
                     <div>
                         <h1>Categories</h1>
                         {categories.map(category => (
-                            <button onClick={handleCategory} value={category}>{category}</button>
+                            <Child onClick={handleCategory} value={category}>{category}</Child>
                         ))}
                     </div>
                 </Children>
             </Collapse>
             {emptyCategory &&
-        <div>
-            <p>{activeCategory}</p>
-            <button onClick={handleCategoryReset}>X</button>
-        </div>}
+        <EmptyCat>
+            <Cat>{activeCategory}</Cat> |
+            <Exit onClick={handleCategoryReset}>X</Exit>
+        </EmptyCat>}
         </Filter>
        
     );

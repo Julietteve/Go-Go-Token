@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {Collapse} from './styles'
+import {Collapse, InnerCollapsed} from './styles'
 
 const CollapseFilter = ({children, isOpen}) => {
  
@@ -15,7 +15,7 @@ const CollapseFilter = ({children, isOpen}) => {
 
     return (
         <Collapse maxHeight = {isOpen ? childHeight : 0}>
-          <div ref={height}>{children}</div>
+          <InnerCollapsed ref={height}>{children}</InnerCollapsed>
         </Collapse>
     );
 };

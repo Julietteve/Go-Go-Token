@@ -8,3 +8,7 @@ export const Collapse = styled.div`
     overflow:auto;
   }
 `
+
+export const InnerCollapsed = styled.div`
+  background-color: white;
+`
