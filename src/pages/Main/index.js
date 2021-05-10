@@ -19,7 +19,7 @@ const Main = () => {
     const {activeFilter, category, } =useSelector(state=>state.filterReducer)
     
     const filteredProducts = sortProducts(products,activeFilter)
-    const articlesPerPage = 10;
+    const articlesPerPage = 9;
     const indexOfLastArticle  = activePage * articlesPerPage;
     const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
     const currentArticles     = filteredProducts.slice( indexOfFirstArticle, indexOfLastArticle );
@@ -35,7 +35,7 @@ const Main = () => {
     const width = {
         small: '200',
         medium : '300',
-        big : '350'
+        big : '400'
     }
 
     return (

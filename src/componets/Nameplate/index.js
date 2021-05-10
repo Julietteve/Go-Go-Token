@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, NameplateTitle, Banner, Box} from './styles'
+import {Container, NameplateTitle, Banner, Box} from './styles';
 
 const Nameplate = () => {
     return (

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Container,Children, Cat, Child, EmptyCat, Exit, Filter, GridIconContainer, FilterContainer, FilterPrice, PriceButton, Size} from "./styles";
+import { Container,Children, Cat, Child, EmptyCat, Exit, Filter, GridIconContainer, FilterContainer, FilterPrice, PriceButton, Size, CatHolder} from "./styles";
 import { useDispatch} from 'react-redux';
 import { applyFilter,setCategory, resetFilter } from "../../redux/actions/filterActions";
 import { BiFilterAlt } from 'react-icons/bi';
@@ -43,8 +43,8 @@ const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig,activeCa
         <Filter>
         <Container>
             <FilterPrice>
-                <PriceButton onClick={()=>setActiveFilter('lowest-price')} >Lowest Price</PriceButton>
-                <PriceButton onClick={()=>setActiveFilter('highest-price')} >Highest price</PriceButton>
+                <PriceButton onClick={()=>setActiveFilter('lowest-price')} >Lowest Price ▼</PriceButton>
+                <PriceButton onClick={()=>setActiveFilter('highest-price')} >Highest price ▲ </PriceButton>
             </FilterPrice>
                 <GridIconContainer>
                     <Size>
@@ -64,12 +64,12 @@ const FilterBar = ({handleWidthSmall, handleWidthMedium, handleWidthBig,activeCa
         </Container>
             <Collapse isOpen={filterIsOpen}>
                 <Children>
-                    <div>
+                    <CatHolder>
                         <h1>Categories</h1>
                         {categories.map(category => (
                             <Child onClick={handleCategory} value={category}>{category}</Child>
                         ))}
-                    </div>
+                    </CatHolder>
                 </Children>
             </Collapse>
             {emptyCategory &&

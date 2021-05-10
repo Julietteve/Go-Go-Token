@@ -3,6 +3,7 @@ import {CardBox, PaginationContainer} from './styles';
 import Pagination from "react-js-pagination";
 import CardProduct from "../CardProduct";
 
+
 const CardContainer = ({products, width,  activePage, onChange, totalItemsCount, categoryNull}) => {
 
     return (

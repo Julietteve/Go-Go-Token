@@ -3,11 +3,22 @@ import {AiOutlineHistory} from 'react-icons/ai';
 import {useDispatch, useSelector} from 'react-redux';
 import {addPointsResetSuccess} from '../../redux/actions/pointsActions'
 import {getUser, postPoints} from '../../utils/services'
-import {Container, LeftContainer, RightContainer, DataUser, NavIcon, AddIcon,Title, PointIcon} from './styles'
+import {Container, CenteredWrap, CenteredWrapCol, LeftContainer, Point, RightContainer, DataUser, NavIcon, AddIcon,Title,PointsWrapper,Wrapper,AddContainer, ButtonWrapper, CloseButton, AddButton, DoneButton} from './styles'
+import spinner from './loader.json';
+import Lottie from 'react-lottie';
 import {Modal} from '..'
 
 
 const UserBar = () => {
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: spinner,
+        rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+        }
+      };
     
     const dispatch = useDispatch()
     const [amountPoints, setAmountPoints] = useState(4000)
@@ -55,17 +66,41 @@ const UserBar = () => {
             <div>
            <Modal id='modal' show={isOpen} handleClose={handleCloseModal}>
                {!isLoading && !hasError && !success &&
-               <div>
-                   <h2>Add Points</h2>
-                   <button onClick={()=> setAmountPoints(1000)}>1000</button>
-                   <button onClick={()=> setAmountPoints(5000)}>5000</button>
-                   <button onClick={()=> setAmountPoints(7500)}>7500</button>
-                   <button onClick={()=> handleAddPoints()}>ADD</button>
-               </div>}
-            {isLoading && <h1>loading</h1>}
-            {success && <h1>You added {amountPoints} points !</h1>}
+                   <>
+                   <AddContainer>
+                       <div>
+                       <h2>Add Points</h2>
+                        <Wrapper/>
+                       </div>
+                   </AddContainer>
+               <PointsWrapper>
+                   <Point onClick={()=> setAmountPoints(1000)}>1000</Point>
+                   <Point onClick={()=> setAmountPoints(5000)}>5000</Point>
+                   <Point onClick={()=> setAmountPoints(7500)}>7500</Point>
+               </PointsWrapper>
+               <ButtonWrapper>
+                    <CloseButton onClick={handleCloseModal}>Cancel</CloseButton>
+                    <AddButton onClick={()=> handleAddPoints()}>Add</AddButton>
+                </ButtonWrapper>
+                   </>
+               }
+            {isLoading && 
+            <CenteredWrap>
+                <Lottie options={defaultOptions}
+                height={400}
+                width={400}
+                />
+            </CenteredWrap>
+            }
+            {success && 
+            <CenteredWrapCol>
+                <div>
+                    <h2>You added {amountPoints} points !</h2>
+                    <DoneButton onClick={handleCloseModal}>Done</DoneButton>
+                </div>
+            </CenteredWrapCol>
+            }
         </Modal>
-    
     </div>
         </Container>
     );

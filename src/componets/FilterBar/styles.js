@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export const Filter = styled.div`
+`;
+
+export const CatHolder = styled.div`
+  transition: all .3s ease-in-out;
 `;
 
 export const FilterContainer = styled.div`
@@ -43,6 +47,7 @@ export const Container = styled.div`
     display:flex;
     flex-direction: row;
     text-align:center;
+    transition: all 0.3s ease-out;
  `;
 
  export const Child = styled.button`
@@ -50,7 +55,7 @@ export const Container = styled.div`
    background-color:transparent;
    color:black;
    margin: 0.2rem;
-   font-size: 0.9rem;
+   font-size: 1.1rem;
    font-family: 'Spartan', sans-serif;
    transition: all 0.3s ease-out;
    cursor: pointer;
@@ -77,7 +82,7 @@ export const Exit = styled.button`
 `;
 
 export const Cat = styled.p`
-   font-size:0.9rem;
+   font-size:1.1rem;
    border: none;
    background-color:transparent;
    color: black;
@@ -94,26 +99,43 @@ export const GridIconContainer = styled.div`
 
 export const FilterPrice = styled.div`
    display:flex;
+   font-size: 1.2rem;
 `;
 
-export const Size = styled.div`
+export const Size = styled.button`
    margin: 25%;
    color: #b5abab;
    font-size: 1.5rem;
+   border:none;
+   background-color:transparent;
+   cursor: pointer;
 
    &:hover{
-      color: #000
+      color: #000;
+   }
+
+   &:focus{
+      color: #000;
    }
 `;
 
-export const PriceButton = styled.div`
-   :nth-child(2){
-   padding-left:20px;
-   box-sizing:border-box;
-   }
-   &:hover{
-      color: #000;
-      font-weight:800;
-   }
+export const PriceButton = styled.button`
+    border:none;
+    background-color:transparent;
+    font-family: "Spartan";
+    font-size:1.2rem;
+    margin: 1rem;
+    transition: all 0.3s ease-out;
+    padding: 1rem;
+    cursor: pointer;
+
+
+    &:hover{
+        background-color:#ebe9eb;
+    }
+
+    &:focus{
+        background-color:#ebe9eb;
+    }
 `;
 

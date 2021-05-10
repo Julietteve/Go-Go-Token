@@ -29,12 +29,14 @@ export const PaginationContainer = styled.div`
     font-size: 1.2em;
     text-decoration: none;
     color: #282723;
-    font-family: "Old Standard TT", serif;
     padding: 2%;
     transition: all 0.2s ease-in-out;
   }
   a:hover {
     transform: scale(1.2);
     color: #7a786a;
+  }
+  a:target{
+    color:red;
   }
 `;
