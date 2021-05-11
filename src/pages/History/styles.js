@@ -50,3 +50,13 @@ export const DateWrapper = styled.div`
     padding-right:2rem;
     box-sizing: border-box;
 `;
+
+export const SplitLine = styled.div`
+    width:100%;
+    height:2px;
+    margin-bottom:2%;
+    display: flex;
+    box-sizing: border-box;
+    border-bottom: 1px solid #F8F8F8;
+`;
+

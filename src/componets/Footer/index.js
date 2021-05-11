@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <Container>
                 <Author>
-                    <span>@tokenFever by Julie</span>
+                    <span>@PointFever by Julie</span>
                 </Author>
                 <Brands>
                         <Sponsor src='images/arolab.png'/>

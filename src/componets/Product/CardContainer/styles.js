@@ -7,7 +7,7 @@ export const CardBox = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding-top: 2%;
+  padding-top: 0.5%;
   padding-bottom:2%;
 `;
 

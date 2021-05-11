@@ -21,6 +21,11 @@ export const FilterContainer = styled.div`
       color:white;
       border: none;
    }
+
+   @media only screen and (max-width: 768px) {
+    display:none;
+   
+  }
 `;
 export const Container = styled.div`
     display: flex;
@@ -33,6 +38,10 @@ export const Container = styled.div`
     padding-right:10%;
     padding:5%;
     box-sizing:border-box;
+
+    @media only screen and (max-width: 768px) {
+      justify-content: center;
+  }
 `;
  export const FilterBox = styled.div`
     display: flex;
@@ -75,10 +84,11 @@ export const EmptyCat = styled.div`
 export const Exit = styled.button`
    border: none;
    background-color:transparent;
-   color:#6666;
+   color:lightgray;
    margin: 0.2rem;
    margin-left: 2rem;
    cursor: pointer;
+   font-weight:bold;
 `;
 
 export const Cat = styled.p`
@@ -95,11 +105,21 @@ export const GridIconContainer = styled.div`
     align-items: center;
     display:flex;
     flex-direction: row;
+
+    @media only screen and (max-width: 768px) {
+    display:none;
+   
+  }
 `;
 
 export const FilterPrice = styled.div`
    display:flex;
    font-size: 1.2rem;
+   @media only screen and (max-width: 768px) {
+    font-size:1rem;
+    justify-content: center;
+   
+  }
 `;
 
 export const Size = styled.button`
@@ -137,5 +157,11 @@ export const PriceButton = styled.button`
     &:focus{
         background-color:#ebe9eb;
     }
+
+    @media only screen and (max-width: 768px) {
+     font-size:0.8rem;
+     margin:0.3rem;
+     padding:0.3rem;
+  }
 `;
 

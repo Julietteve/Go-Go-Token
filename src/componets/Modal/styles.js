@@ -13,12 +13,14 @@ export const ModalMain = styled.div`
 
 export const ModalDisplay = styled.div`
   position: fixed;
+  z-index:10;
   display: ${(props)=>props.display};
   top: 0;
   left: 0;
   width:100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
+  
 `;
 
 export const CloseIconWrap = styled.div`

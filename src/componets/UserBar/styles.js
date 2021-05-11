@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {NavLink as LinkIcon} from 'react-router-dom';
 import {MdAddCircleOutline} from "react-icons/md";
-import {RiCopperCoinLine} from 'react-icons/ri';
 import { VscDebugBreakpointFunction } from "react-icons/vsc";
 
 export const Container = styled.div`
@@ -13,8 +12,11 @@ export const Container = styled.div`
     padding:4%;
     box-sizing:border-box;
     color:#666666;
-`;
 
+    @media only screen and (max-width: 768px) {
+    display:none;
+  }
+`;
 
 export const PointIcon =styled(VscDebugBreakpointFunction)`
     cursor: pointer;

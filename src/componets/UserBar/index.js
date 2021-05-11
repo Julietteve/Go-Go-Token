@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {addPointsResetSuccess} from '../../redux/actions/pointsActions'
 import {getUser, postPoints} from '../../utils/services'
 import {Container, CenteredWrap, CenteredWrapCol, LeftContainer, Point, RightContainer, DataUser, NavIcon, AddIcon,Title,PointsWrapper,Wrapper,AddContainer, ButtonWrapper, CloseButton, AddButton, DoneButton} from './styles'
-import spinner from './loader.json';
+import spinner from '../Lotties/spinner.json';
 import Lottie from 'react-lottie';
 import {Modal} from '..'
 
